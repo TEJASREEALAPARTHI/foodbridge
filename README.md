@@ -47,41 +47,7 @@ foodbridge/
 
 ---
 
-## 🏃 3. Quick Start & Setup Instructions
-
-### Prerequisites
-- [Node.js](https://nodejs.org/) (version 16 or higher)
-- Optional: [MySQL Server](https://dev.mysql.com/downloads/mysql/) / XAMPP / WAMP
-
-### Step 1: Install Dependencies
-```bash
-npm install
-```
-
-### Step 2: (Optional) Setup MySQL Database
-If you have MySQL running:
-```bash
-mysql -u root -p
-```
-```sql
-SOURCE database/schema.sql;
-SOURCE database/sample_data.sql;
-```
-
-### Step 3: Start the FoodBridge Application
-```bash
-npm start
-```
-Visit: **`http://localhost:3000`**
-
-### Step 4: Run Automated Tests
-```bash
-npm test
-```
-
----
-
-## 🔑 4. Demo Login Accounts
+## 🔑 3. Demo Login Accounts
 
 | Role | Email | Password | Organization |
 | :--- | :--- | :--- | :--- |
@@ -91,7 +57,7 @@ npm test
 
 ---
 
-## 🌐 5. REST API Documentation
+## 🌐 4. REST API Documentation
 
 | Method | Endpoint | Description | Sample Payload |
 | :--- | :--- | :--- | :--- |
@@ -106,7 +72,7 @@ npm test
 
 ---
 
-## 🔄 6. Food Donation Lifecycle
+## 🔄 5. Food Donation Lifecycle
 
 ```
 [AVAILABLE] ────────► [ACCEPTED] ────────► [PICKED UP] ────────► [DELIVERED]
@@ -114,7 +80,3 @@ npm test
    surplus food)         donation)            from restaurant)       to shelter)
 ```
 
----
-
-## 📄 License
-This project is open-source and available under the **MIT License**.
