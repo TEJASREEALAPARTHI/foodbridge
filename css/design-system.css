@@ -1,0 +1,152 @@
+/* ==========================================================
+   FOODBRIDGE DESIGN SYSTEM
+   Palette: Warm Neutral, Navy Headings, Deep Teal Accents
+   Accessible, Professional, Social Impact Aesthetic
+   ========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700&display=swap');
+
+:root {
+    /* Color Palette */
+    --bg-main: #F8FAF8;
+    --surface-card: #FFFFFF;
+    --surface-subtle: #F1F5F9;
+    --surface-hover: #F8FAFC;
+    
+    /* Typography Colors */
+    --text-primary: #18324A;
+    --text-secondary: #64748B;
+    --text-muted: #94A3B8;
+    --text-inverse: #FFFFFF;
+
+    /* Primary Accent (Teal) */
+    --primary-accent: #0F766E;
+    --primary-hover: #115E59;
+    --primary-dark: #134E4A;
+    --light-accent: #CCFBF1;
+    --light-accent-border: #99F6E4;
+    --light-accent-text: #0F766E;
+
+    /* Status & Feedback Accents */
+    --warning-accent: #D97706;
+    --warning-light: #FEF3C7;
+    --warning-border: #FDE68A;
+    --warning-text: #92400E;
+
+    --success: #16A34A;
+    --success-light: #DCFCE7;
+    --success-border: #BBF7D0;
+    --success-text: #166534;
+
+    --error: #DC2626;
+    --error-light: #FEE2E2;
+    --error-border: #FECACA;
+    --error-text: #991B1B;
+
+    --info-accent: #2563EB;
+    --info-light: #DBEAFE;
+    --info-border: #BFDBFE;
+    --info-text: #1E40AF;
+
+    /* Neutral Borders & Dividers */
+    --border-color: #E2E8F0;
+    --border-hover: #CBD5E1;
+    --border-focus: #0F766E;
+
+    /* Elevation & Shadows */
+    --shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.04);
+    --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.08), 0 1px 2px -1px rgba(15, 23, 42, 0.08);
+    --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+    --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+
+    /* Typography Scale */
+    --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+    /* Transitions */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 350ms cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* Radii */
+    --radius-xs: 4px;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius-xl: 20px;
+    --radius-full: 9999px;
+}
+
+/* Base Reset & Box Sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-primary);
+    background-color: var(--bg-main);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Typography Hierarchy */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--text-primary);
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+h1 { font-size: 2.25rem; letter-spacing: -0.03em; }
+h2 { font-size: 1.65rem; letter-spacing: -0.02em; }
+h3 { font-size: 1.25rem; letter-spacing: -0.01em; }
+h4 { font-size: 1.05rem; }
+
+p {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+a {
+    color: var(--primary-accent);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+/* Accessibility Focus Ring */
+:focus-visible {
+    outline: 2px solid var(--border-focus);
+    outline-offset: 2px;
+}
+
+/* Layout Containers */
+.app-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    width: 100%;
+}
+
+.main-content {
+    flex: 1;
+    padding: 1.75rem 0 3.5rem;
+}

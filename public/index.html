@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodBridge — Food Donation Platform connecting Donors &amp; NGOs across India</title>
+    <meta name="description" content="FoodBridge connects restaurants, hotels, caterers, and households with verified NGOs across India to prevent food waste and feed communities.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ======================================================
+         1. NAVBAR
+         ====================================================== -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <!-- Brand Logo -->
+            <div class="brand-logo" onclick="switchView('landing')" title="FoodBridge Home">
+                <div class="brand-icon">🍲</div>
+                <div class="brand-name">Food<span>Bridge</span></div>
+            </div>
+
+            <!-- Navigation Links -->
+            <ul class="nav-links">
+                <li><button class="nav-btn active" data-view="landing" id="nav-btn-landing">Home</button></li>
+                <li><button class="nav-btn" data-view="donor" id="nav-btn-donor">🏢 Donor Portal</button></li>
+                <li><button class="nav-btn" data-view="ngo" id="nav-btn-ngo">🤝 NGO Portal</button></li>
+            </ul>
+
+            <!-- Auth Buttons & Profile Widget -->
+            <div class="nav-auth-group">
+                <!-- Guest View: Login / Signup -->
+                <div id="nav-guest-group" style="display: flex; gap: 0.5rem;">
+                    <button class="btn btn-outline btn-sm" id="btn-open-login">Log In</button>
+                    <button class="btn btn-primary btn-sm" id="btn-open-signup">Sign Up</button>
+                </div>
+
+                <!-- Logged-in User Profile Badge -->
+                <div id="nav-user-profile" class="user-profile-badge" style="display: none;">
+                    <div class="user-avatar-circle" id="nav-user-avatar">A</div>
+                    <div class="user-meta-text">
+                        <span class="user-name-text" id="nav-user-name">Annapurna Grand</span>
+                        <span class="user-role-label" id="nav-user-role">Donor</span>
+                    </div>
+                    <button class="btn-logout" id="btn-logout" title="Log Out">✕</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ======================================================
+         2. VIEW 1: LANDING PAGE
+         ====================================================== -->
+    <main id="view-landing">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container hero-grid">
+                <div>
+                    <div class="hero-badge">
+                        <span>🇮🇳</span> Food Rescue Network across India
+                    </div>
+                    <h1 class="hero-title">
+                        Connect Surplus Food With <span>Those Who Need It.</span>
+                    </h1>
+                    <p class="hero-description">
+                        FoodBridge connects restaurants, hotels, wedding caterers, and households with local NGOs across Indian states — reducing edible food waste and ensuring fresh, hot meals reach community shelters on time.
+                    </p>
+                    <div class="hero-cta-group">
+                        <button class="btn btn-primary btn-lg" onclick="switchView('donor')">
+                            🍲 Donate Food
+                        </button>
+                        <button class="btn btn-outline btn-lg" onclick="switchView('ngo')">
+                            🔍 Find Food Near You
+                        </button>
+                    </div>
+
+                    <!-- Quick State Jump Pills -->
+                    <div style="margin-top: 1.75rem;">
+                        <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 0.5rem;">
+                            Quick Browse by State:
+                        </span>
+                        <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
+                            <button class="quick-state-pill" onclick="quickStateSelect('Andhra Pradesh')">Andhra Pradesh</button>
+                            <button class="quick-state-pill" onclick="quickStateSelect('Telangana')">Telangana</button>
+                            <button class="quick-state-pill" onclick="quickStateSelect('Karnataka')">Karnataka</button>
+                            <button class="quick-state-pill" onclick="quickStateSelect('Tamil Nadu')">Tamil Nadu</button>
+                            <button class="quick-state-pill" onclick="quickStateSelect('Maharashtra')">Maharashtra</button>
+                            <button class="quick-state-pill" onclick="quickStateSelect('Delhi')">Delhi</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-image-wrapper">
+                    <img src="assets/images/hero.jpg" alt="Real fresh food donation boxes ready for community distribution" id="img-hero">
+                    <div class="hero-floating-card">
+                        <div>
+                            <strong style="color: var(--primary-dark); font-size: 0.95rem;">Live Food Rescue Activity</strong>
+                            <div style="font-size: 0.8rem; color: var(--text-secondary);">Connecting surplus meals with local verified shelters</div>
+                        </div>
+                        <span class="badge badge-available">🟢 Active</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Numbers Strip -->
+        <section class="impact-strip">
+            <div class="container impact-grid">
+                <div class="impact-item">
+                    <h3 id="stat-impact-meals">1,25,000+</h3>
+                    <p>Meals Rescued &amp; Served</p>
+                </div>
+                <div class="impact-item">
+                    <h3>450+</h3>
+                    <p>Partner NGOs &amp; Trusts</p>
+                </div>
+                <div class="impact-item">
+                    <h3>28+</h3>
+                    <p>Indian States &amp; UTs</p>
+                </div>
+                <div class="impact-item">
+                    <h3>85 Tons</h3>
+                    <p>CO₂ Landfill Emissions Prevented</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Pipeline -->
+        <section class="section section-subtle">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">How It Works</span>
+                    <h2 class="section-title">Simple 4-Step Process</h2>
+                    <p class="section-desc">A straightforward pipeline ensuring surplus food is safely collected and distributed before expiry.</p>
+                </div>
+
+                <div class="steps-pipeline">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">📦</div>
+                        <h3 class="step-title">DONATE</h3>
+                        <p class="step-text">Restaurants, caterers, or households list surplus food with quantity, state, and safe expiry window.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">🤝</div>
+                        <h3 class="step-title">CONNECT</h3>
+                        <p class="step-text">Local NGOs filter active food listings in their state and claim donations with a single click.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">🚚</div>
+                        <h3 class="step-title">PICK UP</h3>
+                        <p class="step-text">NGO volunteers coordinate swift, contactless collection directly from the donor's address.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <div class="step-icon">🍽️</div>
+                        <h3 class="step-title">DELIVER</h3>
+                        <p class="step-text">Fresh, hygienic meals are distributed to community shelters, orphanages, and feeding centers.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Cards -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Platform Features</span>
+                    <h2 class="section-title">Built to End Food Waste</h2>
+                    <p class="section-desc">Practical, lightweight tools designed for everyday donors and busy NGOs.</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon-box">🌱</div>
+                        <h3 class="feature-title">Reduce Food Waste</h3>
+                        <p class="feature-text">Prevent high-quality surplus meals from commercial banquets, buffets, and canteens from ending up in landfills.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-box">🤝</div>
+                        <h3 class="feature-title">Connect With NGOs</h3>
+                        <p class="feature-text">Directly bridge verified community trusts, shelter homes, and feeding programs without complex middlemen.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-box">🗺️</div>
+                        <h3 class="feature-title">State-Based Discovery</h3>
+                        <p class="feature-text">Easily browse and discover food listings filtered by Indian state and union territory with zero GPS overhead.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-box">⏱️</div>
+                        <h3 class="feature-title">Track Freshness</h3>
+                        <p class="feature-text">Real-time dynamic freshness countdowns ensure food is collected and consumed within safe hours.</p>
+                    </div>
+                </div>
+
+                <!-- Visual Spotlights with Real Photos -->
+                <div class="spotlight-grid">
+                    <div class="spotlight-card">
+                        <img src="assets/images/donor_kitchen.jpg" alt="Commercial restaurant kitchen preparing food with care">
+                        <div class="spotlight-body">
+                            <h3 class="spotlight-title">For Restaurants &amp; Caterers</h3>
+                            <p class="feature-text">List banquet and canteen surplus in under 60 seconds with portion counts, dietary labels, and pickup instructions.</p>
+                            <button class="btn btn-outline btn-sm" style="margin-top: 1rem;" onclick="switchView('donor')">Open Donor Portal &rarr;</button>
+                        </div>
+                    </div>
+
+                    <div class="spotlight-card">
+                        <img src="assets/images/delivery.jpg" alt="Community volunteers distributing food">
+                        <div class="spotlight-body">
+                            <h3 class="spotlight-title">For NGOs &amp; Volunteers</h3>
+                            <p class="feature-text">Instantly claim available food in Andhra Pradesh, Telangana, Karnataka, Tamil Nadu, and across India with live claim tracking.</p>
+                            <button class="btn btn-primary btn-sm" style="margin-top: 1rem;" onclick="switchView('ngo')">Open NGO Portal &rarr;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======================================================
+         3. VIEW 2: DONOR PORTAL
+         ====================================================== -->
+    <section id="view-donor" style="display: none; padding: 2.5rem 0;">
+        <div class="container">
+            <div class="portal-header">
+                <div class="portal-title-block">
+                    <h1>Donor Dashboard</h1>
+                    <p>Register surplus food donations from restaurants, hotels, event organizers, and households.</p>
+                </div>
+                <button class="btn btn-accent btn-md" onclick="document.getElementById('donor-form-section').scrollIntoView({behavior: 'smooth'})">
+                    ➕ List New Donation
+                </button>
+            </div>
+
+            <!-- Summary Counters -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <div class="stat-label">Total Donations</div>
+                        <div class="stat-count" id="donor-stat-total">0</div>
+                    </div>
+                    <div class="stat-badge-icon blue">📊</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <div class="stat-label">Available</div>
+                        <div class="stat-count" id="donor-stat-available">0</div>
+                    </div>
+                    <div class="stat-badge-icon emerald">🟢</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <div class="stat-label">Picked Up</div>
+                        <div class="stat-count" id="donor-stat-picked">0</div>
+                    </div>
+                    <div class="stat-badge-icon amber">🚚</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <div class="stat-label">Delivered</div>
+                        <div class="stat-count" id="donor-stat-delivered">0</div>
+                    </div>
+                    <div class="stat-badge-icon purple">✅</div>
+                </div>
+            </div>
+
+            <!-- Donation Form -->
+            <div class="card-section" id="donor-form-section">
+                <div class="card-section-header">
+                    <h2 class="card-section-title">
+                        <span>🍲</span> Donate Surplus Food
+                    </h2>
+                    <span style="font-size: 0.85rem; color: var(--text-muted);">Fill in food details for fast NGO pickup</span>
+                </div>
+
+                <form id="form-add-donation" novalidate>
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label class="form-label" for="input-food-name">Food Item Name <span class="required">*</span></label>
+                            <input type="text" id="input-food-name" class="form-control" placeholder="e.g., Vegetable Biryani, Steamed Rice &amp; Dal, Bakery Bread" required>
+                            <span class="error-feedback" id="error-food-name"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="input-food-type">Food Type <span class="required">*</span></label>
+                            <select id="input-food-type" class="form-control" required>
+                                <option value="" disabled selected>Select Food Type</option>
+                                <option value="Veg">Pure Vegetarian (Veg)</option>
+                                <option value="Non-Veg">Non-Vegetarian</option>
+                                <option value="Vegan">Vegan (Plant-Based)</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <span class="error-feedback" id="error-food-type"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="input-category">Food Category <span class="required">*</span></label>
+                            <select id="input-category" class="form-control" required>
+                                <option value="" disabled selected>Select Category</option>
+                                <option value="Cooked Food">Cooked Food (Hot Meals / Gravies)</option>
+                                <option value="Packaged Food">Packaged / Canned Food</option>
+                                <option value="Bakery">Bakery / Breads / Buns</option>
+                                <option value="Fruits & Vegetables">Fresh Fruits &amp; Vegetables</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <span class="error-feedback" id="error-category"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="input-quantity">Quantity <span class="required">*</span></label>
+                            <input type="number" id="input-quantity" class="form-control" placeholder="e.g., 25" min="1" step="any" required>
+                            <span class="error-feedback" id="error-quantity"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="input-unit">Unit <span class="required">*</span></label>
+                            <select id="input-unit" class="form-control" required>
+                                <option value="" disabled selected>Select Unit</option>
+                                <option value="Kg">Kg (Kilograms)</option>
+                                <option value="Litres">Litres</option>
+                                <option value="Items">Items / Portions</option>
+                                <option value="Packets">Packets</option>
+                                <option value="Boxes">Boxes / Meal Trays</option>
+                            </select>
+                            <span class="error-feedback" id="error-unit"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="input-prepared-time">Prepared Date &amp; Time <span class="required">*</span></label>
+                            <input type="datetime-local" id="input-prepared-time" class="form-control" required>
+                            <span class="error-feedback" id="error-prepared-time"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="input-expiry-time">Safe to Eat Until / Expiry Time <span class="required">*</span></label>
+                            <input type="datetime-local" id="input-expiry-time" class="form-control" required>
+                            <span class="error-feedback" id="error-expiry-time"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="input-state">State in India <span class="required">*</span></label>
+                            <select id="input-state" class="form-control" required>
+                                <option value="" disabled selected>Select State</option>
+                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                <option value="Telangana">Telangana</option>
+                                <option value="Karnataka">Karnataka</option>
+                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                <option value="Kerala">Kerala</option>
+                                <option value="Maharashtra">Maharashtra</option>
+                                <option value="Delhi">Delhi (NCR)</option>
+                                <option value="Gujarat">Gujarat</option>
+                                <option value="Rajasthan">Rajasthan</option>
+                                <option value="West Bengal">West Bengal</option>
+                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                <option value="Punjab">Punjab</option>
+                                <option value="Odisha">Odisha</option>
+                                <option value="Bihar">Bihar</option>
+                                <option value="Goa">Goa</option>
+                            </select>
+                            <span class="error-feedback" id="error-state"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="input-pickup-location">Pickup Address / Landmark <span class="required">*</span></label>
+                            <input type="text" id="input-pickup-location" class="form-control" placeholder="e.g., Road No. 36, Jubilee Hills, Hyderabad" required>
+                            <span class="error-feedback" id="error-pickup-location"></span>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label class="form-label" for="input-description">Additional Notes / Storage Instructions</label>
+                            <textarea id="input-description" class="form-control" placeholder="e.g., Food is packed in hot food grade stainless containers. Please bring transport crates."></textarea>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 1.5rem; display: flex; justify-content: flex-end;">
+                        <button type="submit" class="btn btn-primary btn-lg" id="btn-submit-donation">
+                            ✨ List Donation
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- History Section -->
+            <div class="card-section">
+                <div class="card-section-header">
+                    <h2 class="card-section-title">
+                        <span>📜</span> Donation History &amp; Tracking
+                    </h2>
+                    
+                    <div class="filter-bar">
+                        <div class="filter-group">
+                            <label class="filter-label" for="filter-donor-status">Status:</label>
+                            <select id="filter-donor-status" class="filter-select">
+                                <option value="ALL">All Statuses</option>
+                                <option value="AVAILABLE">Available</option>
+                                <option value="ACCEPTED">Accepted</option>
+                                <option value="PICKED UP">Picked Up</option>
+                                <option value="DELIVERED">Delivered</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label class="filter-label" for="filter-donor-category">Category:</label>
+                            <select id="filter-donor-category" class="filter-select">
+                                <option value="ALL">All Categories</option>
+                                <option value="Cooked Food">Cooked Food</option>
+                                <option value="Packaged Food">Packaged Food</option>
+                                <option value="Bakery">Bakery</option>
+                                <option value="Fruits & Vegetables">Fruits &amp; Vegetables</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="donations-grid" id="donor-donations-list">
+                    <!-- Injected via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================================
+         4. VIEW 3: NGO PORTAL
+         ====================================================== -->
+    <section id="view-ngo" style="display: none; padding: 2.5rem 0;">
+        <div class="container">
+            <div class="ngo-state-banner">
+                <div>
+                    <h2>Find Food Near You</h2>
+                    <p>Select your Indian state to discover active surplus food listings available for immediate NGO pickup.</p>
+                </div>
+                <div class="state-selector-wrapper">
+                    <span style="font-weight: 700; font-size: 0.95rem;">🇮🇳 State:</span>
+                    <select id="ngo-state-select" class="state-dropdown">
+                        <option value="Andhra Pradesh" selected>Andhra Pradesh</option>
+                        <option value="Telangana">Telangana</option>
+                        <option value="Karnataka">Karnataka</option>
+                        <option value="Tamil Nadu">Tamil Nadu</option>
+                        <option value="Kerala">Kerala</option>
+                        <option value="Maharashtra">Maharashtra</option>
+                        <option value="Delhi">Delhi (NCR)</option>
+                        <option value="Gujarat">Gujarat</option>
+                        <option value="Rajasthan">Rajasthan</option>
+                        <option value="West Bengal">West Bengal</option>
+                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                        <option value="Madhya Pradesh">Madhya Pradesh</option>
+                        <option value="Punjab">Punjab</option>
+                        <option value="Odisha">Odisha</option>
+                        <option value="Bihar">Bihar</option>
+                        <option value="Goa">Goa</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Summary Counters -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <div class="stat-label">Available Food</div>
+                        <div class="stat-count" id="ngo-stat-available">0</div>
+                    </div>
+                    <div class="stat-badge-icon emerald">🟢</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <div class="stat-label">Accepted Food</div>
+                        <div class="stat-count" id="ngo-stat-accepted">0</div>
+                    </div>
+                    <div class="stat-badge-icon blue">🤝</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <div class="stat-label">Pending Pickups</div>
+                        <div class="stat-count" id="ngo-stat-picked">0</div>
+                    </div>
+                    <div class="stat-badge-icon amber">🚚</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <div class="stat-label">Completed Deliveries</div>
+                        <div class="stat-count" id="ngo-stat-delivered">0</div>
+                    </div>
+                    <div class="stat-badge-icon purple">✅</div>
+                </div>
+            </div>
+
+            <!-- NGO Content Section -->
+            <div class="card-section">
+                <div class="tabs-nav">
+                    <button class="tab-btn active" data-tab="available" id="tab-ngo-available">
+                        🟢 Active Available Food
+                    </button>
+                    <button class="tab-btn" data-tab="accepted" id="tab-ngo-accepted">
+                        🤝 Accepted Food (Ready for Pickup)
+                    </button>
+                    <button class="tab-btn" data-tab="history" id="tab-ngo-history">
+                        📜 Pickup &amp; Delivery History
+                    </button>
+                </div>
+
+                <div class="card-section-header" style="border-bottom: none; margin-bottom: 1rem; padding-bottom: 0;">
+                    <div>
+                        <span style="font-size: 0.9rem; color: var(--text-secondary);">
+                            Showing food in: <strong id="ngo-selected-state-display" style="color: var(--primary-dark);">ANDHRA PRADESH</strong>
+                        </span>
+                    </div>
+
+                    <div class="filter-bar">
+                        <div class="filter-group">
+                            <label class="filter-label" for="filter-ngo-type">Food Type:</label>
+                            <select id="filter-ngo-type" class="filter-select">
+                                <option value="ALL">All Dietary Types</option>
+                                <option value="Veg">Pure Veg</option>
+                                <option value="Non-Veg">Non-Veg</option>
+                                <option value="Vegan">Vegan</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label class="filter-label" for="filter-ngo-freshness">Freshness:</label>
+                            <select id="filter-ngo-freshness" class="filter-select">
+                                <option value="ALL">All Freshness</option>
+                                <option value="FRESH">Fresh</option>
+                                <option value="EXPIRING">Expiring Soon (&le; 5 hrs)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="donations-grid" id="ngo-donations-list">
+                    <!-- Injected via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================================
+         5. AUTHENTICATION MODAL (LOGIN & SIGN UP)
+         ====================================================== -->
+    <div class="modal-overlay" id="auth-modal">
+        <div class="auth-modal-box">
+            <div class="auth-modal-header">
+                <div class="brand-logo">
+                    <div class="brand-icon" style="width: 32px; height: 32px; font-size: 1.1rem;">🍲</div>
+                    <div class="brand-name" style="font-size: 1.2rem;">Food<span>Bridge</span></div>
+                </div>
+                <button class="close-btn" id="btn-close-auth">&times;</button>
+            </div>
+
+            <!-- Tabs -->
+            <div class="auth-tabs">
+                <button class="auth-tab-btn active" id="auth-tab-login">Log In</button>
+                <button class="auth-tab-btn" id="auth-tab-signup">Sign Up</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="form-login">
+                <div class="form-group" style="margin-bottom: 1rem;">
+                    <label class="form-label" for="login-email">Email Address</label>
+                    <input type="email" id="login-email" class="form-control" placeholder="name@example.com" required>
+                </div>
+                <div class="form-group" style="margin-bottom: 1.25rem;">
+                    <label class="form-label" for="login-password">Password</label>
+                    <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Log In to FoodBridge</button>
+
+                <!-- Quick Demo Login Shortcut Buttons -->
+                <div class="quick-demo-accounts">
+                    <div class="quick-demo-title">⚡ Instant Demo Login</div>
+                    <div class="quick-demo-buttons">
+                        <button type="button" class="quick-demo-btn" onclick="quickLogin('DONOR')">🏢 Log in as Donor</button>
+                        <button type="button" class="quick-demo-btn" onclick="quickLogin('NGO')">🤝 Log in as NGO</button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Signup Form -->
+            <form id="form-signup" style="display: none;">
+                <div class="form-group" style="margin-bottom: 0.9rem;">
+                    <label class="form-label" for="signup-name">Full Name / Org Name</label>
+                    <input type="text" id="signup-name" class="form-control" placeholder="e.g. Annapurna Grand or Seva Trust" required>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 0.9rem;">
+                    <label class="form-label" for="signup-role">I am a</label>
+                    <select id="signup-role" class="form-control" required>
+                        <option value="DONOR">🏢 Food Donor (Restaurant/Caterer/Household)</option>
+                        <option value="NGO">🤝 NGO / Community Kitchen</option>
+                    </select>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 0.9rem;">
+                    <label class="form-label" for="signup-state">State in India</label>
+                    <select id="signup-state" class="form-control" required>
+                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                        <option value="Telangana">Telangana</option>
+                        <option value="Karnataka">Karnataka</option>
+                        <option value="Tamil Nadu">Tamil Nadu</option>
+                        <option value="Kerala">Kerala</option>
+                        <option value="Maharashtra">Maharashtra</option>
+                        <option value="Delhi">Delhi</option>
+                    </select>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 0.9rem;">
+                    <label class="form-label" for="signup-email">Email Address</label>
+                    <input type="email" id="signup-email" class="form-control" placeholder="contact@domain.com" required>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 1.2rem;">
+                    <label class="form-label" for="signup-password">Create Password</label>
+                    <input type="password" id="signup-password" class="form-control" placeholder="Minimum 6 characters" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ======================================================
+         6. FOOTER
+         ====================================================== -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="brand-logo" onclick="switchView('landing')" style="margin-bottom: 0.5rem;">
+                    <div class="brand-icon" style="width: 32px; height: 32px; font-size: 1.1rem;">🍲</div>
+                    <div class="brand-name" style="font-size: 1.2rem;">Food<span>Bridge</span></div>
+                </div>
+                <p>A student-built social impact initiative connecting surplus food from restaurants and caterers with local shelters and NGOs across India.</p>
+            </div>
+
+            <div>
+                <h4 class="footer-links-title">Portals</h4>
+                <ul class="footer-links">
+                    <li><a href="javascript:void(0)" onclick="switchView('landing')">Home &amp; Impact</a></li>
+                    <li><a href="javascript:void(0)" onclick="switchView('donor')">Donate Food</a></li>
+                    <li><a href="javascript:void(0)" onclick="switchView('ngo')">Find Food (NGOs)</a></li>
+                    <li><a href="javascript:void(0)" onclick="openAuthModal('login')">Account Login</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="footer-links-title">State Coverage</h4>
+                <ul class="footer-links">
+                    <li><a href="javascript:void(0)" onclick="quickStateSelect('Andhra Pradesh')">Andhra Pradesh</a></li>
+                    <li><a href="javascript:void(0)" onclick="quickStateSelect('Telangana')">Telangana</a></li>
+                    <li><a href="javascript:void(0)" onclick="quickStateSelect('Karnataka')">Karnataka</a></li>
+                    <li><a href="javascript:void(0)" onclick="quickStateSelect('Tamil Nadu')">Tamil Nadu</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="footer-links-title">Emergency Relief</h4>
+                <ul class="footer-links">
+                    <li><span style="color: var(--text-secondary); font-size: 0.88rem;">📞 Helpline: 1800-FOOD-RELIEF</span></li>
+                    <li><span style="color: var(--text-secondary); font-size: 0.88rem;">✉️ help@foodbridge.org.in</span></li>
+                    <li><span style="color: var(--primary); font-size: 0.88rem; font-weight: 600;">🇮🇳 Zero Food Waste India</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <div>&copy; 2026 FoodBridge India &bull; Built with HTML, CSS, JavaScript, Node.js &amp; Express.</div>
+            <div>Bridging surplus meals to hungry hearts across India.</div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/validation.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
